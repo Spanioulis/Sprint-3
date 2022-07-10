@@ -120,8 +120,22 @@ function cleanCart() {
 }
 
 // Exercise 3
+/*
+ * Genial, l'e-commerce va prenent forma!, és el moment de calcular el total de l'import del carretó.
+ * S'ha d'implementar un bucle for per anar sumant l'import de tots els productes.
+ */
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
+  let importeTotal = 0;
+  let i = 0;
+  const LONGITUD_ARRAY = CART_LIST.length;
+
+  for (let i = 0; i < LONGITUD_ARRAY; i++) {
+    importeTotal += CART_LIST[i].price;
+  }
+
+  console.log(importeTotal);
+  document.getElementById("total_price").innerHTML = importeTotal;
 }
 
 // Exercise 4
