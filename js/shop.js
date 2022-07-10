@@ -99,10 +99,24 @@ function buy(id) {
 }
 
 // Exercise 2
+/*
+ * Ara implementarem una funció que permeti a l'usuari/ària eliminar l'array generat a l'anterior exercici: buidar el carret.
+ *En aquest cas, hauràs d'emplenar la funció cleanCart(), la qual ha de reinicialitzar la variable cartList.
+ */
 function cleanCart() {
+  // Este método funciona:
+  // CART_LIST.length = 0;
+
+  // Este también funciona:
+  CART_LIST.splice(0, CART_LIST.length);
+
   // Lo muestro por consola y por DOM
-  console.log(CART);
-  document.getElementById("count_product").innerHTML = CART.length;
+  console.log(CART_LIST);
+  document.getElementById("count_product").innerHTML = CART_LIST.length;
+
+  //! Pruebas (borrar más adelante)
+  // También añadimos el hecho de borrar el `importeTotal` del carrito:
+  document.getElementById("total_price").innerHTML = 0;
 }
 
 // Exercise 3
