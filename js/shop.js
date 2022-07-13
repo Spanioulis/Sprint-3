@@ -1,5 +1,5 @@
 // TODO: If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
-const PRODUCTS = [
+var products = [
   {
     id: 1,
     name: "cooking oil",
@@ -64,55 +64,43 @@ const PRODUCTS = [
   },
 ];
 // Array with products (objects) added directly with push(). Products in this array are repeated.
-const CART_LIST = [];
+var cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-const CART = [];
+var cart = [];
 
 let total = 0;
 
 // Exercise 1
-/*
- * En primer lloc, en tractar-se d'un e-commerce, farem que l'usuari/ària pugui afegir productes al carretó.
- * La funció que has de completar es diu buy(), la qual rep l'id del producte a afegir. Has de buscar el producte utilitzant aquest id rebut a l'array products, per finalment afegir-ho al array cartList.
- * Els botons que han d'executar la funció buy() són els blaus que es troben en cada producte:
- */
 function buy(id) {
-  //! Cada `Add to Cart` tiene un onclick con la función buy() y su propio id como argumento
-  //   ? ¿Se añade a CART o CART_LIST? Diferencia entre enunciado moodle y enunciado inferior
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
   let i = 0;
-  const LONGITUD_ARRAY = PRODUCTS.length;
-
-  //TODO: Intentar hacerlo con otro tipo de bucle
+  const LONGITUD_ARRAY = products.length;
 
   for (let i = 0; i < LONGITUD_ARRAY; i++) {
-    if (PRODUCTS[i].id === id) {
-      CART_LIST.push(PRODUCTS[i]);
+    if (products[i].id === id) {
+      cartList.push(products[i]);
     }
   }
 
-  //? Lo muestro por consola y por DOM
-  console.log(CART_LIST);
-  document.getElementById("count_product").innerHTML = CART_LIST.length;
+  //? Lo muestro por consola y por DOM (carrito de la compra)
+  //* De momento lo comento para evitar problemas en ejercicio 4
+  // console.log(CART_LIST);
+  document.getElementById("count_product").innerHTML = cartList.length;
 }
 
 // Exercise 2
-/*
- * Ara implementarem una funció que permeti a l'usuari/ària eliminar l'array generat a l'anterior exercici: buidar el carret.
- *En aquest cas, hauràs d'emplenar la funció cleanCart(), la qual ha de reinicialitzar la variable cartList.
- */
 function cleanCart() {
   // Este método funciona:
   // CART_LIST.length = 0;
 
   // Este también funciona:
-  CART_LIST.splice(0, CART_LIST.length);
+  cartList.splice(0, cartList.length);
 
   // Lo muestro por consola y por DOM
-  console.log(CART_LIST);
-  document.getElementById("count_product").innerHTML = CART_LIST.length;
+  console.log(cartList);
+  document.getElementById("count_product").innerHTML = cartList.length;
 
   //! Pruebas (borrar más adelante)
   // También añadimos el hecho de borrar el `importeTotal` del carrito:
@@ -120,28 +108,45 @@ function cleanCart() {
 }
 
 // Exercise 3
-/*
- * Genial, l'e-commerce va prenent forma!, és el moment de calcular el total de l'import del carretó.
- * S'ha d'implementar un bucle for per anar sumant l'import de tots els productes.
- */
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   let importeTotal = 0;
   let i = 0;
-  const LONGITUD_ARRAY = CART_LIST.length;
+  const LONGITUD_ARRAY = cartList.length;
 
   for (let i = 0; i < LONGITUD_ARRAY; i++) {
-    importeTotal += CART_LIST[i].price;
+    importeTotal += cartList[i].price;
   }
 
-  console.log(importeTotal);
-  document.getElementById("total_price").innerHTML = importeTotal;
+  console.log(importeTotal.toFixed(2));
+  document.getElementById("total_price").innerHTML = importeTotal.toFixed(2);
 }
 
 // Exercise 4
 function generateCart() {
-  // Using the "cartlist" array that contains all the items in the shopping cart,
-  // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+  /* Using the "cartlist" array that contains all the items in the shopping cart,
+  generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product. */
+
+  const LONGITUD_CART_LIST = cartList.length;
+
+  for (let i = 0; i < LONGITUD_CART_LIST; i++) {
+    // Buscar si dentro de [cart] encontramos el artículo con esa 'id' de cartList
+    let existeArticulo = cart.find((element) => element.id === cartList[i].id);
+
+    if (existeArticulo === undefined) {
+      // Crear nuevo objeto con nueva propiedad (añadir valor predeterminado)
+      // let newObject = cartList[i];
+      // newObject.quantity = 1;
+      cartList[i].quantity = 1;
+      cart.push(cartList[i]);
+    } else {
+      // Cambiará cantidad ya que encontrará siempre la posición; sino la encontrara el valor seria `-1`
+      let position = cart.indexOf(existeArticulo);
+      cart[position].quantity += 1;
+    }
+
+    console.table(cart);
+  }
 }
 
 // Exercise 5
