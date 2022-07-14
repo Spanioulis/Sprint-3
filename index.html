@@ -26,7 +26,10 @@
 			<div class="d-flex flex-row order-lg-last align-items-center">
 
 				<!--? Botón prueba ejercicio 4 -->
-				<button type="button" class="btn btn-danger me-5" onclick="generateCart()">Ejercicio 4</button>
+				<button type="button" class="btn btn-danger me-5" onclick="generateCart()">Cart - Promo</button>
+
+				<!--? Botón prueba ejercicio 5 -->
+				<!-- <button type="button" class="btn btn-success me-5" onclick="applyPromotionsCart()">Promoción</button> -->
 
 				<button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse"
 					data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -260,15 +263,15 @@
 						<tbody id="cart_list">
 							<tr>
 								<th scope="row">Cooking oil</th>
-								<td>$10.5</td>
-								<td>2</td>
-								<td>$21</td>
+								<td></td>
+								<td></td>
+								<td id="cooking-oil">$21</td>
 							</tr>
 							<tr>
-								<th scope="row">Pasta</th>
-								<td>$6.25</td>
-								<td>1</td>
-								<td>$6.25</td>
+								<th scope="row">Cupcake</th>
+								<td></td>
+								<td></td>
+								<td id="cupcake"></td>
 							</tr>
 							<tr>
 								<th scope="row">Lawn dress</th>
@@ -286,7 +289,7 @@
 						<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
 
 						<!--! Botón de prueba -->
-						<a href="javascript:void(0)" onclick="calculateTotal()" class="btn btn-success m-3">Total</a>
+						<!-- <a href="javascript:void(0)" onclick="calculateTotal()" class="btn btn-success m-3">Total</a> -->
 
 					</div>
 				</div>

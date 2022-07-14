@@ -99,7 +99,7 @@ function cleanCart() {
   cartList.splice(0, cartList.length);
 
   // Lo muestro por consola y por DOM
-  console.log(cartList);
+  // console.log(cartList);
   document.getElementById("count_product").innerHTML = cartList.length;
 
   //! Pruebas (borrar más adelante)
@@ -120,6 +120,7 @@ function calculateTotal() {
 
   console.log(importeTotal.toFixed(2));
   document.getElementById("total_price").innerHTML = importeTotal.toFixed(2);
+  // return importeTotal;
 }
 
 // Exercise 4
@@ -144,14 +145,62 @@ function generateCart() {
       let position = cart.indexOf(existeArticulo);
       cart[position].quantity += 1;
     }
-
-    console.table(cart);
   }
+
+  console.table(cart);
+  applyPromotionsCart();
 }
 
 // Exercise 5
+// TODO: cuando hagat commit Exercise 5, añadir que ha habido cambio en Exercise 4 (clg fuera del for)
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+  // * Hacer un find(por id 1 y 3) por cada producto al que queremos hacerle oferta (let aceite / let postres)
+  // * Similar al ejercicio de Francis Ford Coppola; así ya podemos ver si están o no están
+  // * Hay que crear una propiedad `subtotalWithDiscount` en el array [cart]
+  // * ¿Operación matemática?
+  // * ¿Cambio de precio del producto? ((cart.price = 10)) - La idea sería como en el Exercice 4, con el indexOf...
+  // *
+
+  let LONGITUD_ARRAY = cart.length;
+  let subtotal = 0;
+
+  //TODO: Hacerlo mediante una forma de búsqueda de si el producte tiene offer o no...
+  // let tienePromocion = cart.find((element) => element.offer !== undefined);
+
+  //TODO: Hacer búsqueda de la id según si existe o no el artículo
+
+  for (let i = 0; i < LONGITUD_ARRAY; i++) {
+    if (cart[i].id === 1) {
+      if (cart[i].quantity >= 3) {
+        cart[i].price = 10;
+        cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price;
+        subtotalOil = cart[i].subtotalWithDiscount;
+      } else {
+        cart[i].subtotal = cart[i].quantity * cart[i].price;
+        subtotalOil = cart[i].subtotal;
+      }
+    } else if (cart[i].id === 3) {
+      if (cart[i].quantity >= 10) {
+        cart[i].price = Number(cart[i].price * (2 / 3).toFixed(2));
+        cart[i].subtotalWithDiscount = cart[i].quantity * cart[i].price;
+        subtotalCupcake = cart[i].subtotalWithDiscount;
+      } else {
+        cart[i].subtotal = cart[i].quantity * cart[i].price;
+        subtotalCupcake = cart[i].subtotal;
+      }
+    } else {
+      // Añadir subtotal al resto de artículos
+      cart[i].subtotal = cart[i].quantity * cart[i].price;
+    }
+  }
+
+  console.table(cart);
+  document.getElementById("cooking-oil").innerHTML = `$${subtotalOil}`;
+  document.getElementById("cupcake").innerHTML = `$${subtotalCupcake}`;
+
+  // Llamar a la función para que actualice el precio total al finalizar esta función
+  calculateTotal();
 }
 
 // Exercise 6
@@ -176,5 +225,10 @@ function removeFromCart(id) {
 
 function open_modal() {
   console.log("Open Modal");
+
+  /* Al hacer click en este 'button', llamaríamos a esta función, pero CUIDADO: cada vez que abramos el Òpen Modal` */
+  // generateCart();
+
+  calculateTotal();
   printCart();
 }
