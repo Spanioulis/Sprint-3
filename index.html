@@ -26,7 +26,7 @@
 			<div class="d-flex flex-row order-lg-last align-items-center">
 
 				<!--? Botón prueba ejercicio 4 -->
-				<button type="button" class="btn btn-danger me-5" onclick="generateCart()">Cart - Promo</button>
+				<button type="button" class="btn btn-danger me-5" onclick="generateCart()">Cart</button>
 
 				<!--? Botón prueba ejercicio 5 -->
 				<!-- <button type="button" class="btn btn-success me-5" onclick="applyPromotionsCart()">Promoción</button> -->
@@ -251,7 +251,7 @@
 				</div>
 				<div class="modal-body">
 					<h3 class="text-center bill px-5">Shopping Cart</h3>
-					<table class="table">
+					<table class="table" id="table">
 						<thead>
 							<tr>
 								<th scope="col">Product</th>
@@ -262,22 +262,10 @@
 						</thead>
 						<tbody id="cart_list">
 							<tr>
-								<th scope="row">Cooking oil</th>
+								<th scope="row"></th>
 								<td></td>
 								<td></td>
-								<td id="cooking-oil">$21</td>
-							</tr>
-							<tr>
-								<th scope="row">Cupcake</th>
 								<td></td>
-								<td></td>
-								<td id="cupcake"></td>
-							</tr>
-							<tr>
-								<th scope="row">Lawn dress</th>
-								<td>$15</td>
-								<td>3</td>
-								<td>$45</td>
 							</tr>
 						</tbody>
 					</table>
@@ -287,6 +275,9 @@
 					<div class="text-center">
 						<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
 						<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
+
+						<!--? Botón prueba ejercicio 6 -->
+						<!-- <button type="button" class="btn btn-group me-5" onclick="applyPromotionsCart()">Promo</button> -->
 
 						<!--! Botón de prueba -->
 						<!-- <a href="javascript:void(0)" onclick="calculateTotal()" class="btn btn-success m-3">Total</a> -->
@@ -303,6 +294,8 @@
 		crossorigin="anonymous"></script>
 
 	<!-- Core theme JS-->
+	<!-- Colocar variable var products = [ ] en otro archivo script.js -->
+	<script src="js/products.js"></script>
 	<script src="js/shop.js"></script>
 	<script src="js/checkout.js"></script>
 </body>
