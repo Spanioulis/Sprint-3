@@ -1,0 +1,84 @@
+$primary: rgb(180, 180, 180);
+$component-active-bg:  rgb(2, 50, 112);
+
+header {
+    background-image: url(../images/ludovic-charlet.jpg);
+    background-position: center;
+    background-attachment: contain;
+    background-size: cover;
+    opacity: 0.8;
+    height: 300px;
+
+    h1 {
+        color: black;
+        animation-name: oferta1;
+        animation-duration: 10s;
+        animation-timing-function: ease-out;
+    }
+
+    p {
+        color: white;
+        animation-name: oferta2;
+        animation-duration: 10s;
+        animation-timing-function: ease-out;
+    }
+}
+
+section {
+    .card-img-top {
+        height: 350px;
+        width: auto;
+    }
+
+    .btn-outline-dark {
+        background: rgb(185, 223, 245);
+    }
+    .btn-outline-dark:hover {
+        background: rgb(44, 146, 206);
+    }
+}
+
+//? Mensajes validación formulario
+
+#navbar-example2 {
+    background-color: peru;
+}
+
+.bord {
+        background-color: rgb(210, 214, 213);
+}
+
+@keyframes oferta1{
+        10% {
+            color: grey;
+            font-size: 1rem;
+        }
+        30% {
+            color: rgb(190, 29, 29);
+            font-size: 1.5rem;
+        }
+        60% {
+            color: white;
+            font-size: 2rem;
+        }
+}
+
+@keyframes oferta2{
+    10% {
+        color: black;
+        font-size: 3rem;
+    }
+    30% {
+        color: indigo;
+        font-size: 2rem;
+    }
+    60% {
+        color: orangered;
+        font-size: 1.2rem;
+    }
+    100% {
+
+    }
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";

@@ -85,9 +85,8 @@ function generateCart() {
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
 
-  //TODO: Hacerlo mediante una forma de búsqueda de si el producte tiene offer o no...
-  // let tienePromocion = cart.find((element) => element.offer !== undefined);
-  //TODO: Hacer búsqueda de la id según si existe o no el artículo
+  //TODO: Usar el método filter() para buscar solo offer, y hacer bucle solo por ese nuevo array
+  // let tienePromocion = cart.filter((element) => element.offer !== undefined);
 
   let LONGITUD_ARRAY = cart.length;
 
@@ -129,7 +128,7 @@ function printCart() {
   let mensaje = ``;
 
   for (let i = 0; i < cart.length; i++) {
-    mensaje += `<tbody><tr><th scope="row">${products[i].name}</th>
+    mensaje += `<tbody><tr><th scope="row">${cart[i].name}</th>
     </th><td>${cart[i].price.toFixed(2)}</td><td>${cart[i].quantity}</td><td>$${
       cart[i].subtotalWithDiscount
     }</td></tr>
